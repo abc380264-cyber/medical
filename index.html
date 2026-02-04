@@ -437,7 +437,6 @@
                     </p>
                     <p style="font-weight:600; margin-top:15px;">— Usman A.</p>
                 </div>
-                <!-- You can add 2–3 more if you want -->
             </div>
 
             <div class="section-header" style="margin:100px 0 50px;">
@@ -462,9 +461,6 @@
                     <p>Yes — we use strong encryption and follow strict privacy standards (HIPAA-level security) to keep your data safe.</p>
                 </div>
             </div>
-
-            <!-- Add more FAQ items here if needed -->
-
         </div>
     </section>
 
@@ -475,20 +471,25 @@
         <p style="margin-top:20px; opacity:0.75;">© 2026 Medical — All rights reserved</p>
     </footer>
 
-    <!-- MODAL -->
+    <!-- MODAL / FORM -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('modal').style.display='none'">×</span>
             <h2 class="modal-title">Get Started</h2>
             <p style="color:var(--gray); margin-bottom:30px;">We'll reach out within 24 hours to help you.</p>
 
-            <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="New Registration - Medical">
+            <!-- ──────────────────────────────────────────────── -->
+            <!--               FIXED FORM - sends to your email   -->
+            <form action="https://formsubmit.co/abc380264@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New Patient Registration - Medical">
                 <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <!-- Optional: redirect after submit (uncomment if you want) -->
+                <!-- <input type="hidden" name="_next" value="https://yourusername.github.io/medical/thanks.html"> -->
 
                 <div style="margin-bottom:20px;">
                     <label style="display:block; font-weight:600; margin-bottom:6px;">Full Name *</label>
-                    <input type="text" name="Name" required placeholder="Your name">
+                    <input type="text" name="Name" required placeholder="Your full name">
                 </div>
 
                 <div style="margin-bottom:20px;">
@@ -502,29 +503,37 @@
                 </div>
 
                 <div style="margin-bottom:20px;">
-                    <label style="display:block; font-weight:600; margin-bottom:6px;">Reason</label>
+                    <label style="display:block; font-weight:600; margin-bottom:6px;">Reason for Contact</label>
                     <select name="Reason">
                         <option value="">Choose one</option>
-                        <option>Check-up / General</option>
-                        <option>Symptoms / Concern</option>
-                        <option>Follow-up / Refill</option>
+                        <option>General Check-up</option>
+                        <option>Specific Symptoms / Concern</option>
+                        <option>Follow-up / Prescription</option>
                         <option>Other</option>
                     </select>
                 </div>
 
                 <div style="margin-bottom:25px;">
-                    <label style="display:block; font-weight:600; margin-bottom:6px;">Message</label>
-                    <textarea name="Message" rows="4" placeholder="Tell us more..."></textarea>
+                    <label style="display:block; font-weight:600; margin-bottom:6px;">Additional Details</label>
+                    <textarea name="Message" rows="4" placeholder="Tell us more about your needs..."></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">Submit Registration</button>
+
+                <p style="text-align:center; margin-top:20px; font-size:13px; color:var(--gray);">
+                    🔒 Your information is secure
+                </p>
             </form>
+            <!-- ──────────────────────────────────────────────── -->
         </div>
     </div>
 
     <script>
-        document.getElementById('modal').onclick = e => {
-            if (e.target === e.currentTarget) e.currentTarget.style.display = 'none';
+        // Close modal when clicking outside the content area
+        document.getElementById('modal').onclick = function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
         };
     </script>
 
