@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical - Your Trusted Health Partner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0891B2;
+            --secondary: #06B6D4;
+            --accent: #3B82F6;
+            --dark: #0F172A;
+            --light: #F0F9FF;
+            --white: #FFFFFF;
+            --gray: #64748B;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: var(--white);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero-section {
+            background: linear-gradient(135deg, #0891B2 0%, #06B6D4 50%, #3B82F6 100%);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .hero-headline {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(40px, 7vw, 72px);
+            font-weight: 900;
+            color: white;
+            line-height: 1.15;
+            margin-bottom: 30px;
+        }
+        .hero-subtext {
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 50px;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-cta-button {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 22px 80px;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+            transition: all 0.35s ease;
+        }
+        .hero-cta-button:hover {
+            transform: translateY(-6px) scale(1.04);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.3);
+        }
+
+        /* ==================== ABOUT SECTION ==================== */
+        .about-section {
+            padding: 120px 20px 100px;
+            background: var(--light);
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .section-badge {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(36px, 5.5vw, 54px);
+            color: var(--dark);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .section-title span {
+            color: var(--primary);
+        }
+        .about-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+        .about-image-wrapper img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(8,145,178,0.25);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(8,145,178,0.1);
+            transition: all 0.4s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 70px rgba(8,145,178,0.18);
+        }
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .feature-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .about-cta {
+            text-align: center;
+            margin-top: 80px;
+        }
+        .about-cta-button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 20px 70px;
+            font-size: 19px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 15px 50px rgba(8,145,178,0.35);
+            transition: all 0.4s;
+        }
+        .about-cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(8,145,178,0.45);
+        }
+
+        /* ==================== REVIEWS + FAQ SECTION ==================== */
+        .reviews-faq-section {
+            padding: 100px 20px;
+            background: white;
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+            margin: 60px 0;
+        }
+        .review-card {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 5px solid var(--primary);
+        }
+        .stars {
+            color: #FBBF24;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .review-text {
+            font-style: italic;
+            color: var(--gray);
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .reviewer-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 16px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .faq-question {
+            padding: 24px 32px;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 17px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: var(--light);
+            padding: 0 32px;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 28px 32px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,0.92);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            max-width: 620px;
+            width: 100%;
+            padding: 50px 45px;
+            position: relative;
+            max-height: 92vh;
+            overflow-y: auto;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 42px;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        .modal-title {
+            font-family: 'Merriweather', serif;
+            color: var(--primary);
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 16px 18px;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            font-size: 16px;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(8,145,178,0.12);
+        }
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(35px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero { grid-template-columns: 1fr; }
+            .hero-headline { font-size: clamp(38px, 9vw, 54px); }
+            .hero-cta-button { padding: 18px 60px; font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SECTION 1: HERO / HOOK -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-badge">Trusted Healthcare • 24/7 Access</div>
+            <h1 class="hero-headline">
+                Take Control of Your Health<br>
+                <span style="color:#FDE047;">Today</span>
+            </h1>
+            <p class="hero-subtext">
+                Connect with experienced doctors, get fast answers, secure prescriptions,<br>
+                and personalized care — all from home or in-clinic.
+            </p>
+            <button class="hero-cta-button" onclick="document.getElementById('contactModal').style.display='flex'">START NOW</button>
+        </div>
+    </section>
+
+    <!-- SECTION 2: MORE DETAILS / ABOUT US -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">About Medical</div>
+                <h2 class="section-title">Modern Care <span>That Understands You</span></h2>
+            </div>
+
+            <div class="about-hero">
+                <div>
+                    <h3 style="font-size:32px; font-weight:700; margin-bottom:24px;">Expert Doctors • Always Available</h3>
+                    <p style="color:var(--gray); font-size:17px; line-height:1.8;">
+                        We bring together board-certified physicians and modern technology so you can receive high-quality care whenever and wherever you need it — without long waits or unnecessary stress.
+                    </p>
+                </div>
+                <div class="about-image-wrapper">
+                    <img src="doctor2.jpg" alt="Doctor using tablet">
+                </div>
+            </div>
+
+            <div style="margin:100px 0;">
+                <img src="telemedicine.jpg" alt="Telemedicine consultation" style="width:100%; border-radius:24px; box-shadow:0 20px 60px rgba(8,145,178,0.2);">
+            </div>
+
+            <div style="background:linear-gradient(135deg, var(--primary), var(--secondary)); color:white; padding:70px 40px; border-radius:24px; text-align:center; margin:100px 0;">
+                <img src="healthcare-tech.jpg" alt="Healthcare technology" style="max-width:520px; width:90%; border-radius:16px; margin-bottom:40px; box-shadow:0 25px 70px rgba(0,0,0,0.4);">
+                <h3 style="font-size:34px; font-weight:700; margin-bottom:20px;">Your Health — Simplified</h3>
+                <p style="font-size:18px; max-width:720px; margin:0 auto; opacity:0.95;">
+                    One secure platform for appointments, results, prescriptions, records, and 24/7 doctor access.
+                </p>
+            </div>
+
+            <div class="about-cta">
+                <button class="about-cta-button" onclick="document.getElementById('contactModal').style.display='flex'">START NOW</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: REVIEWS + FAQ -->
+    <section class="reviews-faq-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Patient Feedback</div>
+                <h2 class="section-title">Real Stories from Real People</h2>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Finally found doctors who actually listen. Telemedicine saved me so much time — highly recommend!"</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">A</div>
+                        <div><strong>Ayesha Khan</strong><br><small>2024</small></div>
+                    </div>
+                </div>
+                <!-- Add 2–4 more review cards if desired -->
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Very professional team. Got my reports quickly and doctor explained everything clearly."</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">U</div>
+                        <div><strong>Usman Ali</strong><br><small>2025</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top:120px;">
+                <div class="section-badge">Questions?</div>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                    How quickly can I get an appointment?
+                    <span style="font-size:28px;">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Most patients get same-day or next-day telemedicine slots. In-clinic visits are usually within 1–3 days.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                    Is my information safe?
+                    <span style="font-size:28px;">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes — we use bank-level encryption and follow all HIPAA-equivalent data protection standards.</p>
+                </div>
+            </div>
+
+            <!-- Add more FAQ items as needed -->
+
+        </div>
+    </section>
+
+    <!-- Simple Footer -->
+    <footer style="background:var(--dark); color:white; text-align:center; padding:60px 20px;">
+        <h3 style="font-size:32px; margin-bottom:12px;">Medical</h3>
+        <p>Your Health Partner • Always Here for You</p>
+        <p style="margin:20px 0; opacity:0.8;">© 2025 Medical — All rights reserved</p>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('contactModal').style.display='none'">&times;</span>
+            <h2 class="modal-title">Get Started Today</h2>
+            <p style="color:var(--gray); margin-bottom:35px;">We'll contact you within 24 hours</p>
+
+            <form action="https://formsubmit.co/YOUR_EMAIL_HERE@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New Patient — Medical Landing Page">
+                <input type="hidden" name="_captcha" value="false">
+
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" name="Name" required placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" name="Email" required placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone *</label>
+                    <input type="tel" name="Phone" required placeholder="+92 ...">
+                </div>
+
+                <div class="form-group">
+                    <label>Reason for Contact</label>
+                    <select name="Reason">
+                        <option value="">Select one</option>
+                        <option>General Check-up</option>
+                        <option>Specific Health Concern</option>
+                        <option>Follow-up / Prescription</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Message / Details</label>
+                    <textarea name="Message" rows="4" placeholder="Describe what you need..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit →</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Close modal when clicking outside content
+        document.getElementById('contactModal').onclick = function(e) {
+            if (e.target === this) this.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
